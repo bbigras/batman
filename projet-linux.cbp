@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="batman" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug">
+				<Option output="bin/Debug/batman" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/batman" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-Wall" />
+			<Add option="`sdl-config --cflags`" />
+		</Compiler>
+		<Linker>
+			<Add option="`sdl-config --libs`" />
+			<Add library="SDL_image" />
+			<Add library="SDL_mixer" />
+			<Add library="sqlite3" />
+			<Add library="SDL_ttf" />
+			<Add library="SDL_net" />
+		</Linker>
+		<Unit filename="audio.h" />
+		<Unit filename="batman.cpp" />
+		<Unit filename="bd.h" />
+		<Unit filename="bloc.h" />
+		<Unit filename="debug.h" />
+		<Unit filename="image.h" />
+		<Unit filename="menu.h" />
+		<Unit filename="net.h" />
+		<Unit filename="outils.h" />
+		<Unit filename="palette.h" />
+		<Unit filename="pile.h" />
+		<Unit filename="pointage.h" />
+		<Unit filename="tableau.h" />
+		<Unit filename="video.h" />
+		<Extensions>
+			<code_completion />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
