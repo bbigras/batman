@@ -1,6 +1,6 @@
 #ifndef IMAGE_H
 #define IMAGE_H
-
+//test
 class Image {
 public:
     Image(string fichier = "") {
