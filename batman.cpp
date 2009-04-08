@@ -346,6 +346,7 @@ int main(int argc, char* args[]) {
                     int optionJeu = menu.menuJeu(ecran, options, SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_BPP);
                     if (optionJeu == 3) {
                         quit = true;
+                        choixMenu = 5;
                     }
                     if (optionJeu == 1) {
                         // Réafficher toute le jeu comme
