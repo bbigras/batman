@@ -3,38 +3,6 @@
  *
  * par Louis-Jo�l et Bruno
  *
-adresse : https://burnbox.net/hg/batman/
-
-                            ,-.
-       ___,---.__          /'|`\          __,---,___
-    ,-'    \`    `-.____,-'  |  `-.____,-'    //    `-.
-  ,'        |           ~'\     /`~           |        `.
- /      ___//              `. ,'          ,  , \___      \
-|    ,-'   `-.__   _         |        ,    __,-'   `-.    |
-|   /          /\_  `   .    |    ,      _/\          \   |
-\  |           \ \`-.___ \   |   / ___,-'/ /           |  /
- \  \           | `._   `\\  |  //'   _,' |           /  /
-  `-.\         /'  _ `---'' , . ``---' _  `\         /,-'
-     ``       /     \    ,='/ \`=.    /     \       ''
-             |__   /|\_,--.,-.--,--._/|\   __|
-             /  `./  \\`\ |  |  | /,//' \,'  \
-            /   /     ||--+--|--+-/-|     \   \
-           |   |     /'\_\_\ | /_/_/`\     |   |
-            \   \__, \_     `~'     _/ .__/   /
-             `-._,-'   `-._______,-'   `-._,-'
-
-*/
-
-/* A FAIRE:
-    - Tourner vers la gauche
-    - Regler le bogue des deux destructeurs jaunes...
-
-    - Echanges de bloc entres les deux tableaux
-
-    - Musique (playliste...) et sons (explosions, mouvements...)
-    - Megabloc
-    - AI
-    - Reseau
 */
 
 #include <SDL/SDL.h>
@@ -137,13 +105,7 @@ int main(int argc, char* args[]) {
     if (init() == false)
         return 1;
 
-    // � FAIRE : ajuster pour que �a sonne bien!
-    //Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 1024);
     Mix_OpenAudio(44100, AUDIO_S16SYS, 2, 2048);
-
-    /*Musique unemusique("the.mp3", true);
-    if (!unemusique.Etat())
-        cout << "Probleme avec le fichier chose la la!\n";*/
 
     Menu menu;
     int choixMenu = menu.menuPrincipale(ecran);
@@ -155,6 +117,7 @@ int main(int argc, char* args[]) {
         choixMenu = menu.menuPrincipale(ecran);
     }
     cout << "choix menu: " << choixMenu << endl;
+
     // Tant que l'utilisateur n'a pas choisi de quitter
     while (choixMenu != 5) {
 
