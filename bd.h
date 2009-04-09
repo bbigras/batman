@@ -25,7 +25,9 @@ private:
 class Bd {
 public:
     Bd() {
-        rc = sqlite3_open("db/labd.bd", &db);
+        rc = sqlite3_open("labd.bd", &db);
+        if (rc != SQLITE_OK)
+	    cerr << "Error opening SQLite3 database: labd.bd\n";
         zErrMsg = 0;
     }
 
