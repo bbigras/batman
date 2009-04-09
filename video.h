@@ -3,7 +3,8 @@
 
 #include <smpeg/smpeg.h>
 
-class SDL_Movie {
+class SDL_Movie
+{
 private:
     // Surface for the main ecran
     SDL_Surface *ecran;

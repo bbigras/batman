@@ -9,7 +9,8 @@
 #include "pile.h"
 #include "outils.h"
 
-class Bloc2 {
+class Bloc2
+{
 public:
     Bloc2(int x1, int y1) : x(x1), y(y1) {
         fait = false;
@@ -27,7 +28,8 @@ private:
     bool fait;
 };
 
-class Bloc {
+class Bloc
+{
 public:
 
     Bloc() {}
@@ -119,7 +121,8 @@ private:
     bool tab_droite;
 };
 
-class BlocTombeur {
+class BlocTombeur
+{
 public:
     BlocTombeur() {}
 
@@ -134,74 +137,74 @@ public:
         ElemPile bleh = la_pile->Donne(pile_compteur);
 
         switch (bleh.Bloc1()) {
-            case 1:
-                img1 = lapalette.Bleu();
-                type1 = 1;
-                break;
-            case 2:
-                img1 = lapalette.Vert();
-                type1 = 1;
-                break;
-            case 3:
-                img1 = lapalette.Rouge();
-                type1 = 1;
-                break;
-            case 4:
-                img1 = lapalette.Jaune();
-                type1 = 1;
-                break;
-            case 5:
-                img1 = lapalette.DBleu();
-                type1 = 2;
-                break;
-            case 6:
-                img1 = lapalette.DVert();
-                type1 = 2;
-                break;
-            case 7:
-                img1 = lapalette.DRouge();
-                type1 = 2;
-                break;
-            case 8:
-                img1 = lapalette.DJaune();
-                type1 = 2;
-                break;
+        case 1:
+            img1 = lapalette.Bleu();
+            type1 = 1;
+            break;
+        case 2:
+            img1 = lapalette.Vert();
+            type1 = 1;
+            break;
+        case 3:
+            img1 = lapalette.Rouge();
+            type1 = 1;
+            break;
+        case 4:
+            img1 = lapalette.Jaune();
+            type1 = 1;
+            break;
+        case 5:
+            img1 = lapalette.DBleu();
+            type1 = 2;
+            break;
+        case 6:
+            img1 = lapalette.DVert();
+            type1 = 2;
+            break;
+        case 7:
+            img1 = lapalette.DRouge();
+            type1 = 2;
+            break;
+        case 8:
+            img1 = lapalette.DJaune();
+            type1 = 2;
+            break;
         }
 
         int type2;
         switch (bleh.Bloc2()) {
-            case 1:
-                img2 = lapalette.Bleu();
-                type2 = 1;
-                break;
-            case 2:
-                img2 = lapalette.Vert();
-                type2 = 1;
-                break;
-            case 3:
-                img2 = lapalette.Rouge();
-                type2 = 1;
-                break;
-            case 4:
-                img2 = lapalette.Jaune();
-                type2 = 1;
-                break;
-            case 5:
-                img2 = lapalette.DBleu();
-                type2 = 2;
-                break;
-            case 6:
-                img2 = lapalette.DVert();
-                type2 = 2;
-                break;
-            case 7:
-                img2 = lapalette.DRouge();
-                type2 = 2;
-                break;
-            case 8:
-                img2 = lapalette.DJaune();
-                type2 = 2;
-                break;
+        case 1:
+            img2 = lapalette.Bleu();
+            type2 = 1;
+            break;
+        case 2:
+            img2 = lapalette.Vert();
+            type2 = 1;
+            break;
+        case 3:
+            img2 = lapalette.Rouge();
+            type2 = 1;
+            break;
+        case 4:
+            img2 = lapalette.Jaune();
+            type2 = 1;
+            break;
+        case 5:
+            img2 = lapalette.DBleu();
+            type2 = 2;
+            break;
+        case 6:
+            img2 = lapalette.DVert();
+            type2 = 2;
+            break;
+        case 7:
+            img2 = lapalette.DRouge();
+            type2 = 2;
+            break;
+        case 8:
+            img2 = lapalette.DJaune();
+            type2 = 2;
+            break;
         }
         BlocTombeur un_bloc(le_tableau, img1, bleh.Type1(), img2, bleh.Type2());
         return un_bloc;
@@ -224,18 +227,18 @@ public:
     bool Afficher(SDL_Surface *ecran) {
         pointeur->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y, ecran);
         switch (orientation) {
-            case 0:
-                pointeur2->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y - 30, ecran);
-                break;
-            case 1:
-                pointeur2->Affiche(30*(x + 1) + 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
-                break;
-            case 2:
-                pointeur2->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y + 30, ecran);
-                break;
-            case 3:
-                pointeur2->Affiche(30*(x + 1) - 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
-                break;
+        case 0:
+            pointeur2->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y - 30, ecran);
+            break;
+        case 1:
+            pointeur2->Affiche(30*(x + 1) + 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
+            break;
+        case 2:
+            pointeur2->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y + 30, ecran);
+            break;
+        case 3:
+            pointeur2->Affiche(30*(x + 1) - 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
+            break;
         }
 
         Calcul();
@@ -245,18 +248,18 @@ public:
     bool Afficher2(SDL_Surface *ecran) {
         pointeur->Affiche(220 + (le_tableau == 2 ? 170 : 0), 20, ecran);
         switch (orientation) {
-            case 0:
-                pointeur2->Affiche(220 + (le_tableau == 2 ? 170 : 0), 20 - 30, ecran);
-                break;
-            case 1:
-                pointeur2->Affiche(220 + 30 + (le_tableau == 2 ? 170 : 0), 20, ecran);
-                break;
-            case 2:
-                pointeur2->Affiche(220 + (le_tableau == 2 ? 170 : 0), 20 + 30, ecran);
-                break;
-            case 3:
-                pointeur2->Affiche(220 - 30 + (le_tableau == 2 ? 170 : 0), 20, ecran);
-                break;
+        case 0:
+            pointeur2->Affiche(220 + (le_tableau == 2 ? 170 : 0), 20 - 30, ecran);
+            break;
+        case 1:
+            pointeur2->Affiche(220 + 30 + (le_tableau == 2 ? 170 : 0), 20, ecran);
+            break;
+        case 2:
+            pointeur2->Affiche(220 + (le_tableau == 2 ? 170 : 0), 20 + 30, ecran);
+            break;
+        case 3:
+            pointeur2->Affiche(220 - 30 + (le_tableau == 2 ? 170 : 0), 20, ecran);
+            break;
         }
 
         //Calcul();
@@ -317,35 +320,35 @@ public:
         palette.Blanc()->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y, ecran);
 
         switch (orientation) {
-            case 0:
-                palette.Blanc()->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y - 30, ecran);
-                break;
-            case 1:
-                palette.Blanc()->Affiche(30*(x + 1) + 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
-                break;
-            case 2:
-                palette.Blanc()->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y + 30, ecran);
-                break;
-            case 3:
-                palette.Blanc()->Affiche(30*(x + 1) - 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
-                break;
+        case 0:
+            palette.Blanc()->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y - 30, ecran);
+            break;
+        case 1:
+            palette.Blanc()->Affiche(30*(x + 1) + 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
+            break;
+        case 2:
+            palette.Blanc()->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y + 30, ecran);
+            break;
+        case 3:
+            palette.Blanc()->Affiche(30*(x + 1) - 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
+            break;
         }
         switch (direction) {
-            case 1:
-                x++;
-                break;
-            case 2:
-                x--;
-                break;
-            case 3:
-                y--;
-                break;
-            case 4:
-                y += pixels;
-                break;
-            case 5:
-                y += 30;
-                break;
+        case 1:
+            x++;
+            break;
+        case 2:
+            x--;
+            break;
+        case 3:
+            y--;
+            break;
+        case 4:
+            y += pixels;
+            break;
+        case 5:
+            y += 30;
+            break;
         }
         Afficher(ecran);
     }
@@ -353,18 +356,18 @@ public:
     // Direction : 0 droit, 1 gauche
     void Tourne(SDL_Surface *ecran, PaletteCouleur &palette, int direction = 0) {
         switch (orientation) {
-            case 0:
-                palette.Blanc()->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y - 30, ecran);
-                break;
-            case 1:
-                palette.Blanc()->Affiche(30*(x + 1) + 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
-                break;
-            case 2:
-                palette.Blanc()->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y + 30, ecran);
-                break;
-            case 3:
-                palette.Blanc()->Affiche(30*(x + 1) - 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
-                break;
+        case 0:
+            palette.Blanc()->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y - 30, ecran);
+            break;
+        case 1:
+            palette.Blanc()->Affiche(30*(x + 1) + 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
+            break;
+        case 2:
+            palette.Blanc()->Affiche(30*(x + 1) + (le_tableau == 1 ? 0 : 400), y + 30, ecran);
+            break;
+        case 3:
+            palette.Blanc()->Affiche(30*(x + 1) - 30 + (le_tableau == 1 ? 0 : 400), y, ecran);
+            break;
         }
 
         if (direction == 0) {
@@ -479,73 +482,73 @@ public:
         le_tableau = 2;
 
         switch (p1) {
-            case 1:
-                pointeur = lapalette.Bleu();
-                type = 1;
-                break;
-            case 2:
-                pointeur = lapalette.Vert();
-                type = 1;
-                break;
-            case 3:
-                pointeur = lapalette.Rouge();
-                type = 1;
-                break;
-            case 4:
-                pointeur = lapalette.Jaune();
-                type = 1;
-                break;
-            case 5:
-                pointeur = lapalette.DBleu();
-                type = 2;
-                break;
-            case 6:
-                pointeur = lapalette.DVert();
-                type = 2;
-                break;
-            case 7:
-                pointeur = lapalette.DRouge();
-                type = 2;
-                break;
-            case 8:
-                pointeur = lapalette.DJaune();
-                type = 2;
-                break;
+        case 1:
+            pointeur = lapalette.Bleu();
+            type = 1;
+            break;
+        case 2:
+            pointeur = lapalette.Vert();
+            type = 1;
+            break;
+        case 3:
+            pointeur = lapalette.Rouge();
+            type = 1;
+            break;
+        case 4:
+            pointeur = lapalette.Jaune();
+            type = 1;
+            break;
+        case 5:
+            pointeur = lapalette.DBleu();
+            type = 2;
+            break;
+        case 6:
+            pointeur = lapalette.DVert();
+            type = 2;
+            break;
+        case 7:
+            pointeur = lapalette.DRouge();
+            type = 2;
+            break;
+        case 8:
+            pointeur = lapalette.DJaune();
+            type = 2;
+            break;
         }
 
         switch (p2) {
-            case 1:
-                pointeur2 = lapalette.Bleu();
-                type2 = 1;
-                break;
-            case 2:
-                pointeur2 = lapalette.Vert();
-                type2 = 1;
-                break;
-            case 3:
-                pointeur2 = lapalette.Rouge();
-                type2 = 1;
-                break;
-            case 4:
-                pointeur2 = lapalette.Jaune();
-                type2 = 1;
-                break;
-            case 5:
-                pointeur2 = lapalette.DBleu();
-                type2 = 2;
-                break;
-            case 6:
-                pointeur2 = lapalette.DVert();
-                type2 = 2;
-                break;
-            case 7:
-                pointeur2 = lapalette.DRouge();
-                type2 = 2;
-                break;
-            case 8:
-                pointeur2 = lapalette.DJaune();
-                type2 = 2;
-                break;
+        case 1:
+            pointeur2 = lapalette.Bleu();
+            type2 = 1;
+            break;
+        case 2:
+            pointeur2 = lapalette.Vert();
+            type2 = 1;
+            break;
+        case 3:
+            pointeur2 = lapalette.Rouge();
+            type2 = 1;
+            break;
+        case 4:
+            pointeur2 = lapalette.Jaune();
+            type2 = 1;
+            break;
+        case 5:
+            pointeur2 = lapalette.DBleu();
+            type2 = 2;
+            break;
+        case 6:
+            pointeur2 = lapalette.DVert();
+            type2 = 2;
+            break;
+        case 7:
+            pointeur2 = lapalette.DRouge();
+            type2 = 2;
+            break;
+        case 8:
+            pointeur2 = lapalette.DJaune();
+            type2 = 2;
+            break;
         }
     }
 private:

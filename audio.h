@@ -4,7 +4,8 @@
 #include <iostream>
 using namespace std;
 
-class Son {
+class Son
+{
 public:
     Son(string fichier = "", bool jouer = false) {
         if (fichier != "")
@@ -27,7 +28,8 @@ private:
     Mix_Chunk *son;
 };
 
-class Musique {
+class Musique
+{
 public:
     Musique(string nomfichier, bool jouer = false) {
         Charger(nomfichier);

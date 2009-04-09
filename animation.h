@@ -3,7 +3,8 @@
 
 #include "image.h"
 
-class Animation {
+class Animation
+{
 public:
     Animation() {
         explosion[1].Charger("ex1.gif");
@@ -24,11 +25,11 @@ public:
         explosion[16].Charger("ex16.gif");
     }
 
-    void Afficher(int x, int y,SDL_Surface* screen,int no) {
-        explosion[no].Affiche(x,y,screen);
+    void Afficher(int x, int y, SDL_Surface* screen, int no) {
+        explosion[no].Affiche(x, y, screen);
     }
 
 private:
-Image explosion[16];
+    Image explosion[16];
 };
 #endif

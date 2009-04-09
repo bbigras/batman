@@ -1,7 +1,8 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 //test
-class Image {
+class Image
+{
 public:
     Image(string fichier = "") {
         if (fichier != "")

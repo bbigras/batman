@@ -3,10 +3,11 @@
 
 #include <SDL/SDL_net.h>
 
-class Connection {
+class Connection
+{
 public:
     Connection() {
-        int t=0;
+        int t = 0;
         SDLNet_Init();
 
         tampon = "";
@@ -80,89 +81,89 @@ public:
 
     void Syncro() {
         if (socket && chuck == 0) {
-        int simlag;
-        float lag;
-        Uint32 /*ipaddr,*/ t[2], base, now;
+            int simlag;
+            float lag;
+            Uint32 /*ipaddr,*/ t[2], base, now;
 
-        // get the desired simulated lag from the commandline
-        simlag = 100; //strtol("100", NULL, 0);
+            // get the desired simulated lag from the commandline
+            simlag = 100; //strtol("100", NULL, 0);
 //cout << "c1\n";
-        if (type == 0) {
-  //          cout << "c2\n";
-            base = SDL_GetTicks();
-            t[0] = SDL_SwapBE32(0);
-            t[1] = SDL_SwapBE32(~0L);
-            SDLNet_TCP_Send(socket, t, sizeof(t));
+            if (type == 0) {
+                //          cout << "c2\n";
+                base = SDL_GetTicks();
+                t[0] = SDL_SwapBE32(0);
+                t[1] = SDL_SwapBE32(~0L);
+                SDLNet_TCP_Send(socket, t, sizeof(t));
 //cout << "c4\n";
-            SDLNet_TCP_Recv(socket, t, sizeof(t));
-            now = SDL_GetTicks() - base;
-            t[0] = SDL_SwapBE32(t[0]);
-            t[1] = SDL_SwapBE32(t[1]);
-            lag = (now - t[0]) / 2.0f;
-            printf("S1) now=%u t[0]=%u t[1]=%u (lag=%f)\n",
-                   now , t[0], t[1], lag);
+                SDLNet_TCP_Recv(socket, t, sizeof(t));
+                now = SDL_GetTicks() - base;
+                t[0] = SDL_SwapBE32(t[0]);
+                t[1] = SDL_SwapBE32(t[1]);
+                lag = (now - t[0]) / 2.0f;
+                printf("S1) now=%u t[0]=%u t[1]=%u (lag=%f)\n",
+                       now , t[0], t[1], lag);
 
-            t[0] = SDL_SwapBE32(SDL_GetTicks() - base + (Uint32)lag);
-            t[1] = SDL_SwapBE32(t[1]);
-            SDLNet_TCP_Send(socket, t, sizeof(t));
+                t[0] = SDL_SwapBE32(SDL_GetTicks() - base + (Uint32)lag);
+                t[1] = SDL_SwapBE32(t[1]);
+                SDLNet_TCP_Send(socket, t, sizeof(t));
 
-            SDLNet_TCP_Recv(socket, t, sizeof(t));
-            now = SDL_GetTicks() - base;
-            t[0] = SDL_SwapBE32(t[0]);
-            t[1] = SDL_SwapBE32(t[1]);
-            lag += (Sint32)t[0];
-            printf("S2) now=%u t[0]=%d t[1]=%u (lag=%f)\n",
-                   now , t[0], t[1], lag);
+                SDLNet_TCP_Recv(socket, t, sizeof(t));
+                now = SDL_GetTicks() - base;
+                t[0] = SDL_SwapBE32(t[0]);
+                t[1] = SDL_SwapBE32(t[1]);
+                lag += (Sint32)t[0];
+                printf("S2) now=%u t[0]=%d t[1]=%u (lag=%f)\n",
+                       now , t[0], t[1], lag);
 
-            t[0] = SDL_GetTicks() - base + (Uint32) lag;
-            t[0] = SDL_SwapBE32(t[0]);
-            t[1] = ((Sint32)(now - t[1])) / 2;
-            t[1] = SDL_SwapBE32(t[1]);
-            SDLNet_TCP_Send(socket, t, sizeof(t));
-            cout << "chuk " << chuck++ << endl;
-        } else {
-            SDLNet_TCP_Recv(socket, t, sizeof(t));
-            if (simlag) SDL_Delay(simlag);
-            base = SDL_GetTicks();
-            t[0] = SDL_SwapBE32(t[0]);
-            printf("C1) t[0]=%u\n", t[0]);
+                t[0] = SDL_GetTicks() - base + (Uint32) lag;
+                t[0] = SDL_SwapBE32(t[0]);
+                t[1] = ((Sint32)(now - t[1])) / 2;
+                t[1] = SDL_SwapBE32(t[1]);
+                SDLNet_TCP_Send(socket, t, sizeof(t));
+                cout << "chuk " << chuck++ << endl;
+            } else {
+                SDLNet_TCP_Recv(socket, t, sizeof(t));
+                if (simlag) SDL_Delay(simlag);
+                base = SDL_GetTicks();
+                t[0] = SDL_SwapBE32(t[0]);
+                printf("C1) t[0]=%u\n", t[0]);
 
 
-            t[0] = SDL_SwapBE32(t[0]);
-            t[1] = SDL_SwapBE32(SDL_GetTicks() - base);
-            if (simlag) SDL_Delay(simlag);
-            SDLNet_TCP_Send(socket, t, sizeof(t));
+                t[0] = SDL_SwapBE32(t[0]);
+                t[1] = SDL_SwapBE32(SDL_GetTicks() - base);
+                if (simlag) SDL_Delay(simlag);
+                SDLNet_TCP_Send(socket, t, sizeof(t));
 
-            SDLNet_TCP_Recv(socket, t, sizeof(t));
-            if (simlag) SDL_Delay(simlag);
-            now = SDL_GetTicks() - base;
-            t[0] = SDL_SwapBE32(t[0]);
-            t[1] = SDL_SwapBE32(t[1]);
-            lag = (now - t[1]) / 2.0f;
-            base -= (Uint32) lag;
-            now += (Uint32) lag;
-            printf("C2) now=%u t[0]=%u t[1]=%u (lag=%f)\n",
-                   now, t[0], t[1], lag);
+                SDLNet_TCP_Recv(socket, t, sizeof(t));
+                if (simlag) SDL_Delay(simlag);
+                now = SDL_GetTicks() - base;
+                t[0] = SDL_SwapBE32(t[0]);
+                t[1] = SDL_SwapBE32(t[1]);
+                lag = (now - t[1]) / 2.0f;
+                base -= (Uint32) lag;
+                now += (Uint32) lag;
+                printf("C2) now=%u t[0]=%u t[1]=%u (lag=%f)\n",
+                       now, t[0], t[1], lag);
 
-            t[0] = ((Sint32)(now - t[0])) / 2;
-            t[0] = SDL_SwapBE32(t[0]);
-            t[1] = (SDL_GetTicks() - base + (Uint32) lag);
-            t[1] = SDL_SwapBE32(t[1]);
-            if (simlag) SDL_Delay(simlag);
-            SDLNet_TCP_Send(socket, t, sizeof(t));
+                t[0] = ((Sint32)(now - t[0])) / 2;
+                t[0] = SDL_SwapBE32(t[0]);
+                t[1] = (SDL_GetTicks() - base + (Uint32) lag);
+                t[1] = SDL_SwapBE32(t[1]);
+                if (simlag) SDL_Delay(simlag);
+                SDLNet_TCP_Send(socket, t, sizeof(t));
 
-            SDLNet_TCP_Recv(socket, t, sizeof(t));
-            if (simlag) SDL_Delay(simlag);
-            now = SDL_GetTicks() - base;
-            t[0] = SDL_SwapBE32(t[0]);
-            t[1] = SDL_SwapBE32(t[1]);
-            lag += (Sint32)t[1];
-            base -= (Sint32)t[1];
-            now += (Sint32)t[1];
-            printf("C3) now=%u t[0]=%u t[1]=%d (lag=%f)\n",
-                   now, t[0], t[1], lag);
-           cout << "chuk " << chuck++ << endl;
-        }
+                SDLNet_TCP_Recv(socket, t, sizeof(t));
+                if (simlag) SDL_Delay(simlag);
+                now = SDL_GetTicks() - base;
+                t[0] = SDL_SwapBE32(t[0]);
+                t[1] = SDL_SwapBE32(t[1]);
+                lag += (Sint32)t[1];
+                base -= (Sint32)t[1];
+                now += (Sint32)t[1];
+                printf("C3) now=%u t[0]=%u t[1]=%d (lag=%f)\n",
+                       now, t[0], t[1], lag);
+                cout << "chuk " << chuck++ << endl;
+            }
         }
 
     }
@@ -307,19 +308,19 @@ public:
     void Envoie(string requete, int lequel) {
         if (socket) {
             switch (lequel) {
-                case 1:
-                    requete = "T" + requete + "Z\0";
-                    break;
-                case 2:
-                    requete = "A" + requete + "B\0";
-                    break;
-                case 3:
-                    requete = "M" + requete + "N\0";
-                    break;
-                case 4:
-                    requete = "R" + requete + "C\0";
-                    break;
-                    //default:
+            case 1:
+                requete = "T" + requete + "Z\0";
+                break;
+            case 2:
+                requete = "A" + requete + "B\0";
+                break;
+            case 3:
+                requete = "M" + requete + "N\0";
+                break;
+            case 4:
+                requete = "R" + requete + "C\0";
+                break;
+                //default:
             }
 
             SDLNet_TCP_Send(socket, requete.c_str(), strlen(requete.c_str()));

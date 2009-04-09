@@ -3,7 +3,8 @@
 
 #include <vector>
 
-class Menu {
+class Menu
+{
 public:
     void Afficher(SDL_Surface *ecran) {
         TTF_Font *font = TTF_OpenFont("fonts/GUNSHIP2.TTF", 44);

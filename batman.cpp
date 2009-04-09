@@ -43,7 +43,8 @@ SDL_Surface *ecran = NULL;
 //The event structure that will be used
 SDL_Event event;
 
-bool init() {
+bool init()
+{
     if (SDL_Init(SDL_INIT_EVERYTHING) == -1)
         return false;
 
@@ -66,7 +67,8 @@ bool init() {
     return true;
 }
 
-int main(int argc, char* args[]) {
+int main(int argc, char* args[])
+{
     srand(time(NULL)); // hasard
     Pile la_pile;
 
@@ -332,7 +334,7 @@ int main(int argc, char* args[]) {
                 bool joueur2_mort = false;
 
 
-                if (1==4) { //une_connection.Actif() && !une_connection.Ok()) {
+                if (1 == 4) { //une_connection.Actif() && !une_connection.Ok()) {
 
                 } else {
 

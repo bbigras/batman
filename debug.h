@@ -3,7 +3,8 @@
 
 #include <sstream>
 
-class Grille {
+class Grille
+{
 public:
     Grille(SDL_Surface *ecran) {
         TTF_Font *font = TTF_OpenFont("fonts/lazy.ttf", 28);
@@ -29,7 +30,8 @@ public:
 private:
 };
 
-class Debogue {
+class Debogue
+{
 public:
     Debogue(SDL_Surface *scr) : ecran(scr) {
         font = TTF_OpenFont("fonts/lazy.ttf", 28);

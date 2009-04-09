@@ -10,7 +10,8 @@
 #define TICK_DESTRUCTION 200
 
 // Un tableau est une aire de jeu (un par joueur)
-class Tableau {
+class Tableau
+{
 public:
     Tableau(int letab, SDL_Surface *scr, Pile &lap) : ecran(scr), le_tableau(letab), ptJoueur(letab, ecran), la_pile(&lap) {
         Init_Tableau();
@@ -348,42 +349,42 @@ public:
             if (tourne_droite) {
                 bool ok_tourne = true;
                 switch (un_bloc.Orientation()) {
-                    case 0:
-                        if (un_bloc.Droite() + 1 <= 5) {
-                            for (int i = un_bloc.Haut(); i <= un_bloc.Bas(); i++) {
-                                if (Position(un_bloc.Droite() + 1, i).Couleur() != palette.Blanc())
-                                    ok_tourne = false;
-                            }
-                        } else
-                            ok_tourne = false;
-                        break;
-                    case 1:
-                        if (un_bloc.Bas() + 1 < 13) {
-                            if (Position(un_bloc.Droite(), un_bloc.Bas() + 1).Couleur() != palette.Blanc())
+                case 0:
+                    if (un_bloc.Droite() + 1 <= 5) {
+                        for (int i = un_bloc.Haut(); i <= un_bloc.Bas(); i++) {
+                            if (Position(un_bloc.Droite() + 1, i).Couleur() != palette.Blanc())
                                 ok_tourne = false;
-                            if (Position(un_bloc.Gauche(), un_bloc.Bas() + 1).Couleur() != palette.Blanc())
-                                ok_tourne = false;
-                        } else
+                        }
+                    } else
+                        ok_tourne = false;
+                    break;
+                case 1:
+                    if (un_bloc.Bas() + 1 < 13) {
+                        if (Position(un_bloc.Droite(), un_bloc.Bas() + 1).Couleur() != palette.Blanc())
                             ok_tourne = false;
-                        break;
-                    case 2:
-                        if (un_bloc.Gauche() - 1 >= 0) {
-                            for (int i = un_bloc.Haut(); i <= un_bloc.Bas(); i++) {
-                                if (Position(un_bloc.Droite() - 1, i).Couleur() != palette.Blanc())
-                                    ok_tourne = false;
-                            }
-                        } else
+                        if (Position(un_bloc.Gauche(), un_bloc.Bas() + 1).Couleur() != palette.Blanc())
                             ok_tourne = false;
-                        break;
-                    case 3:
-                        if (un_bloc.Haut() - 1 >= 0) {
-                            if (Position(un_bloc.Droite(), un_bloc.Haut() - 1).Couleur() != palette.Blanc())
+                    } else
+                        ok_tourne = false;
+                    break;
+                case 2:
+                    if (un_bloc.Gauche() - 1 >= 0) {
+                        for (int i = un_bloc.Haut(); i <= un_bloc.Bas(); i++) {
+                            if (Position(un_bloc.Droite() - 1, i).Couleur() != palette.Blanc())
                                 ok_tourne = false;
-                            if (Position(un_bloc.Gauche(), un_bloc.Haut() - 1).Couleur() != palette.Blanc())
-                                ok_tourne = false;
-                        } else
+                        }
+                    } else
+                        ok_tourne = false;
+                    break;
+                case 3:
+                    if (un_bloc.Haut() - 1 >= 0) {
+                        if (Position(un_bloc.Droite(), un_bloc.Haut() - 1).Couleur() != palette.Blanc())
                             ok_tourne = false;
-                        break;
+                        if (Position(un_bloc.Gauche(), un_bloc.Haut() - 1).Couleur() != palette.Blanc())
+                            ok_tourne = false;
+                    } else
+                        ok_tourne = false;
+                    break;
                 };
 
                 if (ok_tourne)
@@ -413,42 +414,42 @@ public:
             if (tourne_gauche) {
                 bool ok_tourne = true;
                 switch (un_bloc.Orientation()) {
-                    case 2:
-                        if (un_bloc.Droite() + 1 <= 5) {
-                            for (int i = un_bloc.Haut(); i <= un_bloc.Bas(); i++) {
-                                if (Position(un_bloc.Droite() + 1, i).Couleur() != palette.Blanc())
-                                    ok_tourne = false;
-                            }
-                        } else
-                            ok_tourne = false;
-                        break;
-                    case 3:
-                        if (un_bloc.Bas() + 1 < 13) {
-                            if (Position(un_bloc.Droite(), un_bloc.Bas() + 1).Couleur() != palette.Blanc())
+                case 2:
+                    if (un_bloc.Droite() + 1 <= 5) {
+                        for (int i = un_bloc.Haut(); i <= un_bloc.Bas(); i++) {
+                            if (Position(un_bloc.Droite() + 1, i).Couleur() != palette.Blanc())
                                 ok_tourne = false;
-                            if (Position(un_bloc.Gauche(), un_bloc.Bas() + 1).Couleur() != palette.Blanc())
-                                ok_tourne = false;
-                        } else
+                        }
+                    } else
+                        ok_tourne = false;
+                    break;
+                case 3:
+                    if (un_bloc.Bas() + 1 < 13) {
+                        if (Position(un_bloc.Droite(), un_bloc.Bas() + 1).Couleur() != palette.Blanc())
                             ok_tourne = false;
-                        break;
-                    case 0:
-                        if (un_bloc.Gauche() - 1 >= 0) {
-                            for (int i = un_bloc.Haut(); i <= un_bloc.Bas(); i++) {
-                                if (Position(un_bloc.Droite() - 1, i).Couleur() != palette.Blanc())
-                                    ok_tourne = false;
-                            }
-                        } else
+                        if (Position(un_bloc.Gauche(), un_bloc.Bas() + 1).Couleur() != palette.Blanc())
                             ok_tourne = false;
-                        break;
-                    case 1:
-                        if (un_bloc.Haut() - 1 >= 0) {
-                            if (Position(un_bloc.Droite(), un_bloc.Haut() - 1).Couleur() != palette.Blanc())
+                    } else
+                        ok_tourne = false;
+                    break;
+                case 0:
+                    if (un_bloc.Gauche() - 1 >= 0) {
+                        for (int i = un_bloc.Haut(); i <= un_bloc.Bas(); i++) {
+                            if (Position(un_bloc.Droite() - 1, i).Couleur() != palette.Blanc())
                                 ok_tourne = false;
-                            if (Position(un_bloc.Gauche(), un_bloc.Haut() - 1).Couleur() != palette.Blanc())
-                                ok_tourne = false;
-                        } else
+                        }
+                    } else
+                        ok_tourne = false;
+                    break;
+                case 1:
+                    if (un_bloc.Haut() - 1 >= 0) {
+                        if (Position(un_bloc.Droite(), un_bloc.Haut() - 1).Couleur() != palette.Blanc())
                             ok_tourne = false;
-                        break;
+                        if (Position(un_bloc.Gauche(), un_bloc.Haut() - 1).Couleur() != palette.Blanc())
+                            ok_tourne = false;
+                    } else
+                        ok_tourne = false;
+                    break;
                 };
 
                 if (ok_tourne)
@@ -617,33 +618,33 @@ public:
         for (int i = 0; i < 6; i++) {
             for (int j = 0; j < 13; j++) {
                 switch (array[j][i]) {
-                    case 1:
-                        SetPosition(i, j, Bloc(palette.Bleu(), 1, larap, array11[j][i]));
-                        break;
-                    case 2:
-                        SetPosition(i, j, Bloc(palette.Jaune(), 1, larap, array11[j][i]));
-                        break;
-                    case 3:
-                        SetPosition(i, j, Bloc(palette.Rouge(), 1, larap, array11[j][i]));
-                        break;
-                    case 4:
-                        SetPosition(i, j, Bloc(palette.Vert(), 1, larap, array11[j][i]));
-                        break;
-                    case 5:
-                        SetPosition(i, j, Bloc(palette.DBleu(), 2, larap, array11[j][i]));
-                        break;
-                    case 6:
-                        SetPosition(i, j, Bloc(palette.DJaune(), 2, larap, array11[j][i]));
-                        break;
-                    case 7:
-                        SetPosition(i, j, Bloc(palette.DRouge(), 2, larap, array11[j][i]));
-                        break;
-                    case 8:
-                        SetPosition(i, j, Bloc(palette.DVert(), 2, larap, array11[j][i]));
-                        break;
-                    default:
-                        SetPosition(i, j, Bloc(palette.Blanc(), 1, larap, array11[j][i]));
-                        break;
+                case 1:
+                    SetPosition(i, j, Bloc(palette.Bleu(), 1, larap, array11[j][i]));
+                    break;
+                case 2:
+                    SetPosition(i, j, Bloc(palette.Jaune(), 1, larap, array11[j][i]));
+                    break;
+                case 3:
+                    SetPosition(i, j, Bloc(palette.Rouge(), 1, larap, array11[j][i]));
+                    break;
+                case 4:
+                    SetPosition(i, j, Bloc(palette.Vert(), 1, larap, array11[j][i]));
+                    break;
+                case 5:
+                    SetPosition(i, j, Bloc(palette.DBleu(), 2, larap, array11[j][i]));
+                    break;
+                case 6:
+                    SetPosition(i, j, Bloc(palette.DJaune(), 2, larap, array11[j][i]));
+                    break;
+                case 7:
+                    SetPosition(i, j, Bloc(palette.DRouge(), 2, larap, array11[j][i]));
+                    break;
+                case 8:
+                    SetPosition(i, j, Bloc(palette.DVert(), 2, larap, array11[j][i]));
+                    break;
+                default:
+                    SetPosition(i, j, Bloc(palette.Blanc(), 1, larap, array11[j][i]));
+                    break;
                 }
 
                 //SetPosition(i, j, un_bloc);
@@ -662,7 +663,7 @@ public:
         ptJoueur.Afficher();
     }
 private:
-int c4;
+    int c4;
     Bloc tableau[13][6];
     SDL_Surface *ecran;
     bool touche_bas;

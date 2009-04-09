@@ -3,7 +3,8 @@
 
 #include "image.h"
 
-class PaletteCouleur {
+class PaletteCouleur
+{
 public:
     PaletteCouleur() {
         drouge = new Image("images/bombeRouge.PNG");

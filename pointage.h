@@ -3,18 +3,19 @@
 
 #include <sstream>
 
-class Pointage {
+class Pointage
+{
 public:
     Pointage(int noJoueur, SDL_Surface *scr) : points(0), rectPointage("images/rectPointage.bmp"), ecran(scr) {
         switch (noJoueur) {
-            case 1:
-                offset.x = 60;
-                offset.y = 425;
-                break;
-            case 2:
-                offset.x = 460;
-                offset.y = 425;
-                break;
+        case 1:
+            offset.x = 60;
+            offset.y = 425;
+            break;
+        case 2:
+            offset.x = 460;
+            offset.y = 425;
+            break;
         }
 
         changer = false;

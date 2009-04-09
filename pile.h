@@ -1,7 +1,8 @@
 #ifndef PILE_H
 #define PILE_H
 
-class ElemPile {
+class ElemPile
+{
 public:
     ElemPile() {
         bloc1 = (rand() % 4) + 1;
@@ -41,7 +42,8 @@ private:
     int type2;
 };
 
-class Pile {
+class Pile
+{
 public:
     Pile() {
         Init_Pile();

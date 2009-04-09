@@ -3,7 +3,8 @@
 
 #include <sqlite3.h>
 
-class Personne {
+class Personne
+{
 public:
     Personne() {}
 
@@ -22,12 +23,13 @@ private:
 };
 
 
-class Bd {
+class Bd
+{
 public:
     Bd() {
         rc = sqlite3_open("labd.bd", &db);
         if (rc != SQLITE_OK)
-	    cerr << "Error opening SQLite3 database: labd.bd\n";
+            cerr << "Error opening SQLite3 database: labd.bd\n";
         zErrMsg = 0;
     }
 
